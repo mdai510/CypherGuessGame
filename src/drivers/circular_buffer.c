@@ -1,16 +1,6 @@
-/**
- * @file circular_buffer.c
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief
- * @version 0.1
- * @date 2023-09-27
- *
- * @copyright Copyright (c) 2023
- *
- */
 #include "circular_buffer.h"
 
-#ifdef ECE353_FREERTOS
+#ifdef FREERTOS
 //*****************************************************************************
 // Initializes a circular buffer.
 //
@@ -176,4 +166,4 @@ bool circular_buffer_remove(circular_buffer_t *buffer, char *c)
   *c = return_char;
   return true;
 }
-#endif  // ECE353_FREERTOS
+#endif  // FREERTOS

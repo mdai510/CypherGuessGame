@@ -1,15 +1,5 @@
-/**
- * @file io_expander.c
- * @author your name (you@domain.com)
- * @brief
- * @version 0.1
- * @date 2023-09-01
- *
- * @copyright Copyright (c) 2023
- *
- */
 #include "main.h"
-#if defined(ECE353_FREERTOS)
+#if defined(FREERTOS)
 #include "cyhal_gpio.h"
 #include "devices.h"
 #include "rtos_events.h"

@@ -1,13 +1,3 @@
-/**
- * @file i2c.c
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief 
- * @version 0.1
- * @date 2025-08-06
- * 
- * @copyright Copyright (c) 2025
- * 
- */
 #include "i2c.h"
 
 static cyhal_i2c_t i2c_monarch_obj;

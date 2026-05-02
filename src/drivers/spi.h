@@ -1,13 +1,3 @@
-/**
- * @file spi.h
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief 
- * @version 0.1
- * @date 2025-09-15
- * 
- * @copyright Copyright (c) 2025
- * 
- */
 #ifndef __SPI_H__
 #define __SPI_H__
 
@@ -21,7 +11,7 @@
 #include "cyhal_hw_types.h"
 #include "cyhal_spi.h"
 #include "cyhal_gpio.h"
-#include "ece353-pins.h"
+#include "pins.h"
 
 /* Macros */
 #define SPI_FREQ			10000000 // 10 MHz
@@ -31,7 +21,7 @@
 extern cyhal_spi_t mSPI;
 
 /**
- * @brief Initialize the SPI interface used on the ECE353 board.
+ * @brief Initialize the SPI interface used on the board.
  *
  * @return cyhal_spi_t* Returns a pointer to the initialized SPI object.
  *         NULL if initialization failed.

@@ -1,17 +1,7 @@
-/**
- * @file task_ipc_rx.c
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief
- * @version 0.1
- * @date 2025-08-21
- *
- * @copyright Copyright (c) 2025
- *
- */
 #include "main.h"
 #include <stdbool.h>
 
-#if defined(ECE353_FREERTOS)
+#if defined(FREERTOS)
 #include "task_ipc.h"
 
 static const char *const STATUS_MSGS[3] = {"OK", "CRC FAIL",
@@ -62,18 +52,18 @@ void task_ipc_rx(void *param) {
       switch (cmd) {
       case IPC_CMD_DISCOVERY:
         opp_randnum = IPC_Rx_Consume_Buffer->payload.randnum;
-        xEventGroupSetBits(ECE353_RTOS_Events, IPC_DISCOVERY_RECEIVED);
+        xEventGroupSetBits(RTOS_Events, IPC_DISCOVERY_RECEIVED);
         ipc_send_ack(sequence_num);
         break;
 
       case IPC_CMD_ACK:
         printf("Ack Received with Sequence Number: %d!\n\r", sequence_num);
-        xEventGroupSetBits(ECE353_RTOS_Events, IPC_ACK_RECEIVED);
+        xEventGroupSetBits(RTOS_Events, IPC_ACK_RECEIVED);
         break;
 
       case IPC_CMD_INACTIVE_PLAYER:
         printf("Received Inactive Player Command\n\r");
-        xEventGroupSetBits(ECE353_RTOS_Events, IPC_GUESS_RESPONSE_RECEIVED);
+        xEventGroupSetBits(RTOS_Events, IPC_GUESS_RESPONSE_RECEIVED);
         uint16_t inactive_payload =
             IPC_Rx_Consume_Buffer->payload.inactive_player;
         xQueueSend(Queue_Guess_Response_Received, &inactive_payload,
@@ -82,19 +72,19 @@ void task_ipc_rx(void *param) {
         break;
       case IPC_CMD_ACTIVE_PLAYER:
         printf("Received Active Player Command\n\r");
-        xEventGroupSetBits(ECE353_RTOS_Events, IPC_GUESS_RECEIVED);
+        xEventGroupSetBits(RTOS_Events, IPC_GUESS_RECEIVED);
         uint32_t guess_encoded = IPC_Rx_Consume_Buffer->payload.active_player;
         xQueueSend(Queue_Guess_Received, &guess_encoded, portMAX_DELAY);
         ipc_send_ack(sequence_num);
         break;
       case IPC_CMD_RDY:
         printf("Received Ready Command\n\r");
-        xEventGroupSetBits(ECE353_RTOS_Events, IPC_RDY_RECEIVED);
+        xEventGroupSetBits(RTOS_Events, IPC_RDY_RECEIVED);
         ipc_send_ack(sequence_num);
         break;
       case IPC_CMD_RST:
         printf("Received Reset Command\n\r");
-        xEventGroupSetBits(ECE353_RTOS_Events, IPC_RESET_RECEIVED);
+        xEventGroupSetBits(RTOS_Events, IPC_RESET_RECEIVED);
         ipc_send_ack(sequence_num);
         break;
       case IPC_CMD_STATUS:
@@ -136,4 +126,4 @@ bool task_ipc_resources_init_rx(void) {
   return true;
 }
 
-#endif
+#endif /* FREERTOS */

@@ -1,19 +1,9 @@
-/**
- * @file hw05.h
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief
- * @version 0.1
- * @date 2026-03-23
- *
- * @copyright Copyright (c) 2026
- *
- */
-#ifndef __HW05_H__
-#define __HW05_H__
+#ifndef __GAME_MAIN_H__
+#define __GAME_MAIN_H__
 
 #include "main.h"
 
-#if defined(HW05)
+#if defined(GAME_MAIN)
 
 #include "drivers.h"
 #include "rtos_events.h"
@@ -59,4 +49,4 @@ void task_hw05_system_control(void *pvParameters);
 
 #endif
 
-#endif /* __HW05_H__ */
+#endif /* __GAME_MAIN_H__ */

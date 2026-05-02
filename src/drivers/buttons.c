@@ -1,18 +1,7 @@
-/**
- * @file buttons.c
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief 
- * @version 0.1
- * @date 2025-06-30
- * 
- * @copyright Copyright (c) 2025
- * 
- */
-
 #include "buttons.h"
 #include "cyhal_timer.h"
-#include "ece353-events.h"
-#include "ece353-pins.h"
+#include "events.h"
+#include "pins.h"
 
 #define REG_IN_BUTTON (*(volatile uint32_t *)(0x40310310)) // Address for P6 Input Register
 
@@ -53,7 +42,7 @@ static void button_timer_handler(void* arg, cyhal_timer_event_t event){
   if(sw1 == 0){
     button_counts[0]++;
     if(button_counts[0] == 5){
-      ECE353_Events.sw1 = 1;
+      Events.sw1 = 1;
     }
   }
   else{
@@ -63,7 +52,7 @@ static void button_timer_handler(void* arg, cyhal_timer_event_t event){
   if(sw2 == 0){
     button_counts[1]++;
     if(button_counts[1] == 5){
-      ECE353_Events.sw2 = 1;
+      Events.sw2 = 1;
     }
   }
   else{
@@ -73,7 +62,7 @@ static void button_timer_handler(void* arg, cyhal_timer_event_t event){
   if(sw3 == 0){
     button_counts[2]++;
     if(button_counts[2] == 5){
-      ECE353_Events.sw3 = 1;
+      Events.sw3 = 1;
     }
   }
   else{
@@ -87,7 +76,7 @@ cy_rslt_t buttons_init_timer(void){
   return timer_init(&button_timer, &button_timer_cfg, 500000, button_timer_handler);
 }
 
-button_state_t buttons_get_state(ece353_button_t button) {
+button_state_t buttons_get_state(button_t button) {
   // Assume buttons are not pressed at startup (active low)
   //static variable to hold previous levels of all buttons
   static bool prev_lvls[3] = {1, 1, 1}; 

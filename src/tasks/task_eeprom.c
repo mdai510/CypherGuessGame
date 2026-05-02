@@ -1,16 +1,6 @@
-/**
- * @file task_eeprom.c
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief
- * @version 0.1
- * @date 2025-09-17
- *
- * @copyright Copyright (c) 2025
- *
- */
 #include "main.h"
 
-#if defined(ECE353_FREERTOS)
+#if defined(FREERTOS)
 #include "drivers.h"
 #include "task_console.h"
 #include "task_eeprom.h"
@@ -174,4 +164,4 @@ bool task_eeprom_resources_init(SemaphoreHandle_t *spi_semaphore,
   return true;
 }
 
-#endif /* ECE353_FREERTOS */
+#endif /* FREERTOS */

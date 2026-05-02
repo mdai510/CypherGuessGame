@@ -1,13 +1,3 @@
-/**
- * @file master_mind.h
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief
- * @version 0.1
- * @date 2026-01-06
- *
- * @copyright Copyright (c) 2026
- *
- */
 #ifndef __MASTER_MIND_H__
 #define __MASTER_MIND_H__
 

@@ -1,18 +1,8 @@
-/**
- * @file task_imu.h
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief
- * @version 0.1
- * @date 2025-09-16
- *
- * @copyright Copyright (c) 2025
- *
- */
 #ifndef __TASK_IMU_H__
 #define __TASK_IMU_H__
 
 #include "main.h"
-#if defined(ECE353_FREERTOS)
+#if defined(FREERTOS)
 #include "cyhal_spi.h"
 #include "devices.h"
 #include "drivers.h"
@@ -26,6 +16,6 @@ bool system_sensors_get_imu(QueueHandle_t return_queue, int16_t imu_data[3]);
 bool task_imu_resources_init(void *spi_semaphore, cyhal_spi_t *spi_obj,
                              cyhal_gpio_t cs_pin);
 
-#endif /* ECE353_FREERTOS */
+#endif /* FREERTOS */
 
 #endif /* __TASK_IMU_H__ */

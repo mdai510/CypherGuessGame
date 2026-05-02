@@ -1,13 +1,3 @@
-/**
- * @file imu.h
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief 
- * @version 0.1
- * @date 2025-09-15
- * 
- * @copyright Copyright (c) 2025
- * 
- */
 #ifndef __IMU_H__
 #define __IMU_H__
 

@@ -1,16 +1,6 @@
-/**
- * @file task_buzzer.c
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief 
- * @version 0.1
- * @date 2025-08-13
- * 
- * @copyright Copyright (c) 2025
- * 
- */
 #include "main.h"
 
-#ifdef ECE353_FREERTOS
+#ifdef FREERTOS
 
 #include "task_buzzer.h"
 
@@ -31,7 +21,7 @@ void task_buzzer(void *arg)
     (void)arg; // Unused parameter
     while (1)
     {
-        event_bits = xEventGroupWaitBits(ECE353_RTOS_Events, SW1_PRESSED | SW2_PRESSED | SW3_PRESSED, pdTRUE, pdFALSE, portMAX_DELAY);
+        event_bits = xEventGroupWaitBits(RTOS_Events, SW1_PRESSED | SW2_PRESSED | SW3_PRESSED, pdTRUE, pdFALSE, portMAX_DELAY);
         if(event_bits & SW1_PRESSED){
             buzzer_on();
         }

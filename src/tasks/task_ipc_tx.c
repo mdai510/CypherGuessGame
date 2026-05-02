@@ -1,17 +1,7 @@
-/**
- * @file task_ipc_tx.c
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief
- * @version 0.1
- * @date 2025-09-03
- *
- * @copyright Copyright (c) 2025
- *
- */
 #include "circular_buffer.h"
 #include "main.h"
 
-#if defined(ECE353_FREERTOS)
+#if defined(FREERTOS)
 #include "task_ipc.h"
 
 /* Global Variables */
@@ -71,4 +61,4 @@ bool task_ipc_resources_init_tx(void) {
   }
 }
 
-#endif
+#endif /* FREERTOS */

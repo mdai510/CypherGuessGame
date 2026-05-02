@@ -1,16 +1,6 @@
-/**
- * @file task_cap_touch.c
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief
- * @version 0.1
- * @date 2026-01-07
- *
- * @copyright Copyright (c) 2026
- *
- */
 #include "task_cap_touch.h"
 
-#if defined(ECE353_FREERTOS)
+#if defined(FREERTOS)
 #include "rtos_events.h"
 
 /*****************************************************************************/
@@ -164,4 +154,4 @@ bool task_cap_touch_resources_init(QueueHandle_t queue_request,
                      TASK_CAP_TOUCH_STACK_SIZE, NULL, TASK_CAP_TOUCH_PRIORITY,
                      NULL) == pdPASS;
 }
-#endif /* ECE353_FREERTOS */
+#endif /* FREERTOS */

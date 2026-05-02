@@ -1,19 +1,9 @@
-/**
- * @file task_light_sensor.h
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief
- * @version 0.1
- * @date 2025-09-18
- *
- * @copyright Copyright (c) 2025
- *
- */
 #ifndef __TASK_LIGHT_SENSOR_H__
 #define __TASK_LIGHT_SENSOR_H__
 
 #include "main.h"
 
-#if defined(ECE353_FREERTOS)
+#if defined(FREERTOS)
 
 #include "devices.h"
 #include "drivers.h"
@@ -45,6 +35,6 @@ bool task_light_sensor_resources_init(SemaphoreHandle_t *i2c_semaphore,
                                       cyhal_i2c_t *i2c_obj);
 void task_light_sensor(void *arg);
 
-#endif
+#endif /* FREERTOS */
 
 #endif

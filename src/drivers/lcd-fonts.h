@@ -1,13 +1,3 @@
-/**
- * @file lcd-fonts.h
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief 
- * @version 0.1
- * @date 2025-07-01
- * 
- * @copyright Copyright (c) 2025
- * 
- */
 #ifndef __LCD_FONTS_H__
 #define __LCD_FONTS_H__
 

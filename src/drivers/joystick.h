@@ -1,10 +1,3 @@
-/*
- * adc.h
- *
- *  Created on: 4/20/2023
- *      Author: Joe Krachey
- */
-
 #ifndef __JOYSTICK_H__
 #define __JOYSTICK_H__
 
@@ -12,7 +5,7 @@
 #include "cybsp.h"
 #include "cy_result.h"
 #include "cy_retarget_io.h"
-#include "ece353-pins.h"
+#include "pins.h"
 #include "cyhal_adc.h"
 
 #include <ctype.h>

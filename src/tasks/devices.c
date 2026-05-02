@@ -1,16 +1,6 @@
-/**
- * @file devices.c
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief
- * @version 0.1
- * @date 2025-10-27
- *
- * @copyright Copyright (c) 2025
- *
- */
 #include "devices.h"
 
-#if defined(ECE353_FREERTOS)
+#if defined(FREERTOS)
 #include "task_console.h"
 #include "task_eeprom.h"
 #include "task_imu.h"
@@ -109,4 +99,4 @@ bool parse_cli_data(char *data, device_request_msg_t *request) {
   return false;
 }
 
-#endif /* ECE353_FREERTOS */
+#endif /* FREERTOS */

@@ -1,18 +1,7 @@
-/**
- * @file task_buttons.c
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief 
- * @version 0.1
- * @date 2025-08-13
- * 
- * @copyright Copyright (c) 2025
- * 
- */
-
 #include "task_buttons.h"
 #include "task_console.h"
 
- #ifdef ECE353_FREERTOS
+ #ifdef FREERTOS
  /**
   * @brief 
   * Task used to debounce button presses (SW1, SW2, SW3).  
@@ -20,7 +9,7 @@
   * the button for 30mS. Each button should be sampled every 15mS.
   *
   * When a button press is detected, the corresponding event is set in
-  * in the event group ECE353_RTOS_Events.
+  * in the event group RTOS_Events.
   *
   * @param arg 
   * Unused parameter
@@ -37,7 +26,7 @@
           button_counts[0]++;
           if (button_counts[0] == 2) {
             //printf("SW1 Pressed\n\r");
-            xEventGroupSetBits(ECE353_RTOS_Events, SW1_PRESSED);
+            xEventGroupSetBits(RTOS_Events, SW1_PRESSED);
             //task_console_printf("BUTTON SW1 PRESSED\n\r");
           }
         } else {
@@ -48,7 +37,7 @@
         if ((PORT_BUTTON_SW2->IN & MASK_BUTTON_PIN_SW2) == 0) {
           button_counts[1]++;
           if (button_counts[1] == 2) {
-            xEventGroupSetBits(ECE353_RTOS_Events, SW2_PRESSED);
+            xEventGroupSetBits(RTOS_Events, SW2_PRESSED);
             //task_console_printf("BUTTON SW2 PRESSED\n\r");
           }
         } else {
@@ -59,7 +48,7 @@
         if ((PORT_BUTTON_SW3->IN & MASK_BUTTON_PIN_SW3) == 0) {
           button_counts[2]++;
           if (button_counts[2] == 2) {
-            xEventGroupSetBits(ECE353_RTOS_Events, SW3_PRESSED);
+            xEventGroupSetBits(RTOS_Events, SW3_PRESSED);
             //task_console_printf("BUTTON SW3 PRESSED\n\r");
           }
         } else {

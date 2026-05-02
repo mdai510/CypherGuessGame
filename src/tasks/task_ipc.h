@@ -1,20 +1,9 @@
-/**
- * @file task_console.h
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief
- * @version 0.1
- * @date 2025-08-15
- *
- * @copyright Copyright (c) 2025
- *
- */
-
 #ifndef __TASK_IPC_H__
 #define __TASK_IPC_H__
 
 #include "main.h"
 
-#if defined(ECE353_FREERTOS)
+#if defined(FREERTOS)
 #include "cyhal_uart.h"
 #include "drivers.h"
 #include "portmacro.h"
@@ -128,6 +117,6 @@ bool ipc_send_rst(uint16_t sequence_num);
 bool ipc_send_ack(uint16_t sequence_num);
 bool ipc_wait_for_ack(uint32_t timeout_ms);
 
-#endif /* ECE353_FREERTOS */
+#endif /* FREERTOS */
 
 #endif /* __TASK_IPC_H__ */

@@ -1,14 +1,3 @@
-/**
- * @file main.h
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief 
- * @version 0.1
- * @date 2025-07-01
- * 
- * @copyright Copyright (c) 2025
- * 
- */
-
 #ifndef __MAIN_H__
 #define __MAIN_H__
 
@@ -28,9 +17,9 @@
 #include <stdio.h>
 
 /* Uncomment the line below to enable FreeRTOS in your applications*/
-#define ECE353_FREERTOS
+#define FREERTOS
 
-#if defined(ECE353_FREERTOS)
+#if defined(FREERTOS)
 /* FreeRTOS Includes */
 #include <FreeRTOS.h>
 #include <event_groups.h>

@@ -1,18 +1,8 @@
-/**
- * @file task_eeprom.h
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief
- * @version 0.1
- * @date 2025-09-17
- *
- * @copyright Copyright (c) 2025
- *
- */
 #ifndef __TASK_EEPROM_H__
 #define __TASK_EEPROM_H__
 #include "main.h"
 
-#if defined(ECE353_FREERTOS)
+#if defined(FREERTOS)
 
 #include "devices.h"
 #include "drivers.h"
@@ -33,6 +23,6 @@ bool system_sensors_eeprom_read(QueueHandle_t return_queue, uint16_t address,
 bool task_eeprom_resources_init(SemaphoreHandle_t *spi_semaphore,
                                 cyhal_spi_t *spi_obj, cyhal_gpio_t cs_pin);
 
-#endif /* ECE353_FREERTOS */
+#endif /* FREERTOS */
 
 #endif /* __TASK_EEPROM_H__ */

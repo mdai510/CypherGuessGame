@@ -1,14 +1,3 @@
-/**
- * @file master_mind.c
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief
- * @version 0.1
- * @date 2026-01-06
- *
- * @copyright Copyright (c) 2026
- *
- */
-
 #include "master_mind_lib.h"
 #include "drivers.h"
 #include "main.h"

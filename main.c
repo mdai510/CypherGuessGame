@@ -55,7 +55,7 @@
 * Global Variables
 *******************************************************************************/
 char NAME[] = "Max Dai"; // Replace with your name
-volatile ece353_events_t ECE353_Events;
+volatile events_t Events;
 
 /*******************************************************************************
 * Function Prototypes

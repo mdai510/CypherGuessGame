@@ -1,17 +1,6 @@
-/**
- * @file task_lcd.c
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief
- * @version 0.1
- * @date 2025-08-18
- *
- * @copyright Copyright (c) 2025
- *
- */
-
 #include "task_lcd.h"
 
-#if defined(ECE353_FREERTOS)
+#if defined(FREERTOS)
 
 /* FreeRTOS Queue for LCD messages */
 static QueueHandle_t Queue_Requests = NULL;
@@ -86,4 +75,4 @@ bool task_lcd_resources_init(QueueHandle_t queue_request) {
 
   return true;
 }
-#endif
+#endif /* FREERTOS */

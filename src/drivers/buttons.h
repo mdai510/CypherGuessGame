@@ -1,13 +1,3 @@
-/**
- * @file buttons.h
- * @author  Joe Krachey (jkrachey@wisc.edu)
- * @brief 
- * @version 0.1
- * @date 2025-06-30
- * 
- * @copyright Copyright (c) 2025
- * 
- */
 #ifndef __BUTTONS_H__
 #define __BUTTONS_H__
 
@@ -15,15 +5,15 @@
 #include "cybsp.h"
 #include "cyhal_gpio.h"
 #include "cyhal_timer.h" 
-#include "ece353-pins.h"
-#include "ece353-events.h"
+#include "pins.h"
+#include "events.h"
 #include "timer.h"
 
 typedef enum {
     BUTTON_SW1 = 0,
     BUTTON_SW2,
     BUTTON_SW3,
-} ece353_button_t;
+} button_t;
 
 typedef enum {
     BUTTON_STATE_FALLING_EDGE = 0,
@@ -39,7 +29,7 @@ cy_rslt_t buttons_init_gpio(void);
 cy_rslt_t buttons_init_timer(void);
 
 // Function to read the state of a specific button
-button_state_t buttons_get_state(ece353_button_t button);
+button_state_t buttons_get_state(button_t button);
 
 
 

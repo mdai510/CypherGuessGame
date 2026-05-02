@@ -1,14 +1,3 @@
-/**
- * @file leds.c
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief 
- * @version 0.1
- * @date 2025-06-30
- * 
- * @copyright Copyright (c) 2025
- * 
- */
-
 #include "leds.h"
 
 #define REG_OUT_LED_RG (*(volatile uint32_t *)(0x40310480)) // Address for P9 Output Register
@@ -35,7 +24,7 @@ cy_rslt_t leds_init_gpio(void){
     return CY_RSLT_SUCCESS;
 }
 
-void leds_set_state(ece353_led_t led, ece353_led_state_t state){
+void leds_set_state(led_t led, led_state_t state){
     if(led == LED_RED || led == LED_GREEN){
         if(state) REG_OUT_LED_RG |= LED_masks[led];
         else REG_OUT_LED_RG &= ~LED_masks[led];

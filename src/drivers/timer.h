@@ -1,13 +1,3 @@
-/**
- * @file timer.h
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief 
- * @version 0.1
- * @date 2023-09-25
- * 
- * @copyright Copyright (c) 2023
- * 
- */
 #ifndef __TIMER_H__
 #define __TIMER_H__
 

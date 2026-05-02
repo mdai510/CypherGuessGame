@@ -1,9 +1,4 @@
-/*
- *  Created on: Jan 27, 2023
- *      Author: Joe Krachey
- */
-
-#ifndef EEPROM_H_
+    #ifndef EEPROM_H_
 #define EEPROM_H_
 
 #include "cy_pdl.h"

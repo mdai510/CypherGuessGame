@@ -1,17 +1,6 @@
-/**
- * @file task_imu.c
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief
- * @version 0.1
- * @date 2025-09-16
- *
- * @copyright Copyright (c) 2025
- *
- */
-
 #include "task_imu.h"
 
-#if defined(ECE353_FREERTOS)
+#if defined(FREERTOS)
 #include "imu.h"
 #include "task_console.h"
 
@@ -116,4 +105,4 @@ bool task_imu_resources_init(void *spi_semaphore, cyhal_spi_t *spi_obj,
   return true;
 }
 
-#endif /* ECE353_FREERTOS */
+#endif /* FREERTOS */

@@ -1,19 +1,9 @@
-/**
- * @file task_temp_sensor.h
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief
- * @version 0.1
- * @date 2025-09-18
- *
- * @copyright Copyright (c) 2025
- *
- */
 #ifndef __TASK_TEMP_SENSOR_H__
 #define __TASK_TEMP_SENSOR_H__
 
 #include "main.h"
 
-#if defined(ECE353_FREERTOS)
+#if defined(FREERTOS)
 #include "devices.h"
 #include "drivers.h"
 
@@ -32,6 +22,6 @@ bool system_sensors_get_temp(QueueHandle_t return_queue, float *temperature);
 bool task_temp_sensor_resources_init(SemaphoreHandle_t *i2c_semaphore,
                                      cyhal_i2c_t *i2c_obj);
 
-#endif
+#endif /* FREERTOS */
 
 #endif

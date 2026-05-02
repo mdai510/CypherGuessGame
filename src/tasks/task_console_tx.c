@@ -1,16 +1,6 @@
-/**
- * @file task_console.c
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief
- * @version 0.1
- * @date 2025-08-15
- *
- * @copyright Copyright (c) 2025
- *
- */
 #include "main.h"
 
-#ifdef ECE353_FREERTOS
+#ifdef FREERTOS
 #include "cyhal_uart.h"
 #include "drivers.h"
 #include "task_console.h"

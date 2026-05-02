@@ -1,13 +1,3 @@
-/**
- * @file eeprom.c
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief 
- * @version 0.1
- * @date 2023-10-24
- * 
- * @copyright Copyright (c) 2023
- * 
- */
 #include "eeprom.h"
 #include "cyhal_hw_types.h"
 #include <sys/types.h>

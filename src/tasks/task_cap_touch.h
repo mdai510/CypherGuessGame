@@ -1,20 +1,9 @@
-/**
- * @file task_cap_touch.h
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief
- * @version 0.1
- * @date 2026-03-2026
- *
- * @copyright Copyright (c) 2026
- *
- */
-
 #ifndef __TASK_CAP_TOUCH_H__
 #define __TASK_CAP_TOUCH_H__
 
 #include "main.h"
 
-#if defined(ECE353_FREERTOS)
+#if defined(FREERTOS)
 
 #include "cap_touch.h"
 #include "drivers.h"

@@ -1,12 +1,5 @@
-/*
- * pwd-leds.h
- *
- *  Created on: Mar 7, 2023
- *      Author: Joe Krachey
- */
-
-#ifndef __ECE353_GPIO_LCD_H__
-#define __ECE353_GPIO_LCD_H__
+#ifndef __GPIO_LCD_H__
+#define __GPIO_LCD_H__
 
 #include <stdint.h>
 #include <stdbool.h>
@@ -14,7 +7,7 @@
 #include "cyhal.h"
 #include "cybsp.h"
 #include <stdio.h>
-#include "ece353-pins.h"
+#include "pins.h"
 
 #define LCD_ROWS  240
 #define LCD_COLS  320
@@ -216,4 +209,4 @@ void lcd_config_screen(void);
 *******************************************************************************/
 cy_rslt_t lcd_initialize(void);
 
-#endif /* ECE353__GPIO_LCD_H_ */
+#endif /* __GPIO_LCD_H__ */

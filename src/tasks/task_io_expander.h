@@ -1,16 +1,9 @@
-/*
- * opt3001.h
- *
- *  Created on: Oct 20, 2020
- *      Author: Joe Krachey
- */
-
 #ifndef __TASK_IO_EXPANDER_H__
 #define __TASK_IO_EXPANDER_H__
 
 #include "main.h"
 
-#if defined(ECE353_FREERTOS)
+#if defined(FREERTOS)
 #include "drivers.h"
 
 #define TCA9534_SUBORDINATE_ADDR 0x20

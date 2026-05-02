@@ -1,15 +1,5 @@
- /**
- * @file ece353-pins.h
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief 
- * @version 0.1
- * @date 2025-07-01
- * 
- * @copyright Copyright (c) 2025
- * 
- */
- #ifndef __ECE353_BSP_H__
- #define __ECE353_BSP_H__
+ #ifndef __PINS_H__
+ #define __PINS_H__
 
  /***************************************************************************/
  /* LEDs                                                                    */

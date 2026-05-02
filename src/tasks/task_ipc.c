@@ -1,13 +1,3 @@
-/**
- * @file task_ipc.c
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief
- * @version 0.1
- * @date 2025-09-03
- *
- * @copyright Copyright (c) 2025
- *
- */
 #include "task_ipc.h"
 #include "cy_result.h"
 #include "cyhal_hw_types.h"
@@ -15,7 +5,7 @@
 #include "main.h"
 #include "task_console.h"
 
-#if defined(ECE353_FREERTOS)
+#if defined(FREERTOS)
 
 /*****************************************************************************/
 /* Global Variables                                                          */
@@ -160,7 +150,7 @@ bool ipc_send_ack(uint16_t sequence_num) {
 
 bool ipc_wait_for_ack(uint32_t timeout_ms) {
   EventBits_t bits =
-      xEventGroupWaitBits(ECE353_RTOS_Events, IPC_ACK_RECEIVED, pdTRUE, pdFALSE,
+      xEventGroupWaitBits(RTOS_Events, IPC_ACK_RECEIVED, pdTRUE, pdFALSE,
                           pdMS_TO_TICKS(timeout_ms));
 
   return (bits & IPC_ACK_RECEIVED);

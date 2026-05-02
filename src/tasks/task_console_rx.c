@@ -1,19 +1,9 @@
-/**
- * @file task_console_rx.c
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief
- * @version 0.1
- * @date 2025-08-21
- *
- * @copyright Copyright (c) 2025
- *
- */
 #include "main.h"
 #include "task_cap_touch.h"
 #include "task_eeprom.h"
 
 
-#ifdef ECE353_FREERTOS
+#ifdef FREERTOS
 #include "cyhal_uart.h"
 #include "devices.h"
 #include "drivers.h"
@@ -34,7 +24,7 @@
 console_buffer_t console_buffer1;
 console_buffer_t console_buffer2;
 
-// Pointers to the above buffers that switch based on which buffer thenISR
+// Pointers to the above buffers that switch based on which buffer the ISR
 // is writing to
 console_buffer_t *produce_console_buffer;
 console_buffer_t *consume_console_buffer;

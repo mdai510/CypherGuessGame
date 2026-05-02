@@ -1,13 +1,3 @@
-/**
- * @file console.c
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief 
- * @version 0.1
- * @date 2025-06-17
- * 
- * @copyright Copyright (c) 2025
- * 
- */
  #include "main.h"
 #include "console.h"
 #include "cy_result.h"

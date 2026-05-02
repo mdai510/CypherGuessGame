@@ -1,18 +1,8 @@
-/**
- * @file devices.h
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief
- * @version 0.1
- * @date 2025-10-24
- *
- * @copyright Copyright (c) 2025
- *
- */
 #ifndef __DEVICES_H__
 #define __DEVICES_H__
 
 #include "main.h"
-#if defined(ECE353_FREERTOS)
+#if defined(FREERTOS)
 #include "joystick.h"
 typedef enum {
   DEVICE_IMU = 0,

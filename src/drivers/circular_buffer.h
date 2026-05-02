@@ -1,18 +1,8 @@
-/**
- * @file circular_buffer.h
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief 
- * @version 0.1
- * @date 2023-09-27
- * 
- * @copyright Copyright (c) 2023
- * 
- */
 #ifndef __CIRCULAR_BUFFER_H_
 #define __CIRCULAR_BUFFER_H_
 
 #include "main.h"
-#ifdef ECE353_FREERTOS 
+#ifdef FREERTOS 
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
@@ -96,5 +86,5 @@ uint32_t circular_buffer_get_num_bytes(circular_buffer_t *buffer);
 //*****************************************************************************
 void circular_buffer_reset(circular_buffer_t *buffer);
 
-#endif // ECE353_FREERTOS
-#endif /* circular_buffer_H_ */
+#endif // FREERTOS
+#endif /* CIRCULAR_BUFFER_H_ */

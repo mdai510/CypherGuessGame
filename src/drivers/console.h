@@ -1,14 +1,3 @@
-/**
- * @file ece353.h
- * @author your name (you@domain.com)
- * @brief 
- * @version 0.1
- * @date 2023-08-15
- * 
- * @copyright Copyright (c) 2023
- * 
- */
-
 #ifndef __CONSOLE_H__
 #define __CONSOLE_H__
 

@@ -1,17 +1,7 @@
-/**
- * @file task_temp_sensor.c
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief
- * @version 0.1
- * @date 2025-09-18
- *
- * @copyright Copyright (c) 2025
- *
- */
 #include "cy_result.h"
 #include "main.h"
 
-#if defined(ECE353_FREERTOS)
+#if defined(FREERTOS)
 #include "drivers.h"
 #include "task_console.h"
 #include "task_temp_sensor.h"

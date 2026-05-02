@@ -1,24 +1,13 @@
-/**
- * @file rtos_events.h
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief
- * @version 0.1
- * @date 2025-08-13
- *
- * @copyright Copyright (c) 2025
- *
- */
-
 #ifndef __RTOS_EVENTS_H__
 #define __RTOS_EVENTS_H__
 #include "main.h"
 
-#ifdef ECE353_FREERTOS
+#ifdef FREERTOS
 
 /*******************************************************************************
  * Event Group for system events.
  ******************************************************************************/
-extern EventGroupHandle_t ECE353_RTOS_Events;
+extern EventGroupHandle_t RTOS_Events;
 
 /*******************************************************************************
  * Macros used to define the system events
@@ -36,6 +25,6 @@ extern EventGroupHandle_t ECE353_RTOS_Events;
 #define IPC_RESET_RECEIVED (1 << 10)
 #define JOYSTICK_MOVED (1 << 11)
 
-#endif // ECE353_FREERTOS
+#endif // FREERTOS
 
 #endif // __RTOS_EVENTS_H__

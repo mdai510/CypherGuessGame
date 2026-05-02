@@ -1,13 +1,3 @@
-/**
- * @file timer.c
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief 
- * @version 0.1
- * @date 2024-08-14
- * 
- * @copyright Copyright (c) 2024
- * 
- */
 #include "timer.h"
 #include "cyhal_timer.h"
 #include "cyhal_timer_impl.h"

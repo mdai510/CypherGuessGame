@@ -1,17 +1,7 @@
-/**
- * @file task_joystick.c
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief
- * @version 0.1
- * @date 2025-08-14
- *
- * @copyright Copyright (c) 2025
- *
- */
 
 #include "main.h"
 
-#ifdef ECE353_FREERTOS
+#ifdef FREERTOS
 #include "drivers.h"
 #include "task_joystick.h"
 
@@ -49,4 +39,4 @@ bool task_joystick_init(void) {
 
   return true;
 }
-#endif
+#endif /* FREERTOS */

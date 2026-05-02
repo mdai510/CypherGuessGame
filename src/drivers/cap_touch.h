@@ -8,10 +8,6 @@
 
 #define FT6X06_I2C_ADDR 0x38
 
-//*****************************************************************************
-// Fill out the #defines below to configure which pins are connected to
-// the I2C Bus
-//*****************************************************************************
 #define FT6X06_FOCALTECH_ID_R 0xA8
 #define FT6X06_DEFAULT_ID 0x11
 

@@ -1,19 +1,9 @@
-/**
- * @file task_lcd.h
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief
- * @version 0.1
- * @date 2025-08-18
- *
- * @copyright Copyright (c) 2025
- *
- */
 #ifndef TASK_LCD_H
 #define TASK_LCD_H
 
 #include "main.h"
 
-#if defined(ECE353_FREERTOS)
+#if defined(FREERTOS)
 #include "drivers.h"
 #include "master_mind_lib.h"
 
@@ -38,5 +28,5 @@ typedef struct {
 /* LCD Task Initialization */
 bool task_lcd_resources_init(QueueHandle_t queue_request);
 
-#endif /* ECE353_FREERTOS */
+#endif /* FREERTOS */
 #endif /* TASK_LCD_H */

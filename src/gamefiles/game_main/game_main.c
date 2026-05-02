@@ -1,18 +1,6 @@
-/**
- * @file hw05.c
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief
- * @version 0.1
- * @date 2025-10-08
- *
- * @copyright Copyright (c) 2025
- *
- */
-#include "hw05.h"
+#include "game_main.h"
 
-#if defined(HW05)
-
-char APP_DESCRIPTION[] = "ECE353 S26 HW05";
+#if defined(GAME_MAIN)
 
 /*****************************************************************************/
 /* Global Variables                                                          */
@@ -31,7 +19,7 @@ QueueHandle_t Queue_Light_Sensor_Responses;
 QueueHandle_t Queue_Response_Cap_Touch;
 QueueHandle_t Queue_Guess_Received;
 QueueHandle_t Queue_Guess_Response_Received;
-EventGroupHandle_t ECE353_RTOS_Events;
+EventGroupHandle_t RTOS_Events;
 TaskHandle_t xHandleCapTouch;
 
 // game state
@@ -72,7 +60,7 @@ void discover_board(uint16 *sequence_num, bool *is_first) {
     ipc_wait_for_ack(TIMEOUT);
     // wait for discovery message from other board, retry after timeout
     EventBits_t event =
-        xEventGroupWaitBits(ECE353_RTOS_Events, IPC_DISCOVERY_RECEIVED, pdTRUE,
+        xEventGroupWaitBits(RTOS_Events, IPC_DISCOVERY_RECEIVED, pdTRUE,
                             pdFALSE, pdMS_TO_TICKS(500));
     if (event & IPC_DISCOVERY_RECEIVED) {
       if (randnum == opp_randnum) {
@@ -307,7 +295,7 @@ void task_light_sensor_poll(void *pvParameters) {
     if (consecutive_count >= 2 && prev_is_dark != is_dark) {
       is_dark = prev_is_dark;
       cur_bg_color = is_dark ? LCD_COLOR_BLACK : LCD_COLOR_WHITE;
-      xEventGroupSetBits(ECE353_RTOS_Events, LIGHT_SENSOR_UPDATED);
+      xEventGroupSetBits(RTOS_Events, LIGHT_SENSOR_UPDATED);
       // task_console_printf("Ambient light changed, is_dark: %d\n\r", is_dark);
     }
 
@@ -425,7 +413,7 @@ static void update_ui(char msg[50], uint32_t cur_cypher_index,
  *
  * @param pvParameters UNUSED
  */
-void task_hw05_system_control(void *pvParameters) {
+void task_game_system_control(void *pvParameters) {
   (void)pvParameters;
 
   EventBits_t event;
@@ -453,7 +441,7 @@ void task_hw05_system_control(void *pvParameters) {
   uint16_t sequence_num = 0;
 
   while (1) {
-    event = xEventGroupWaitBits(ECE353_RTOS_Events, LIGHT_SENSOR_UPDATED,
+    event = xEventGroupWaitBits(RTOS_Events, LIGHT_SENSOR_UPDATED,
                                 pdTRUE, pdFALSE, NO_TIMEOUT);
     if (event & LIGHT_SENSOR_UPDATED) {
       update_ui(cur_msg, cypher_index, highlight_cypher_tiles);
@@ -461,7 +449,7 @@ void task_hw05_system_control(void *pvParameters) {
 
     // wait for discover message (other board reset), if received go back to
     // init state
-    event = xEventGroupWaitBits(ECE353_RTOS_Events, IPC_DISCOVERY_RECEIVED,
+    event = xEventGroupWaitBits(RTOS_Events, IPC_DISCOVERY_RECEIVED,
                                 pdTRUE, pdFALSE, NO_TIMEOUT);
     if (event & IPC_DISCOVERY_RECEIVED) {
       game_state = STATE_INIT;
@@ -475,12 +463,12 @@ void task_hw05_system_control(void *pvParameters) {
       get_init_eeprom(cur_msg);
       display_init_ui(cur_msg);
       discover_board(&sequence_num, &goes_first);
-      xEventGroupClearBits(ECE353_RTOS_Events, IPC_DISCOVERY_RECEIVED);
+      xEventGroupClearBits(RTOS_Events, IPC_DISCOVERY_RECEIVED);
 
       game_state = STATE_ENTER_CYPHER;
       break;
     case STATE_ENTER_CYPHER:
-      event = xEventGroupWaitBits(ECE353_RTOS_Events, SW1_PRESSED, pdTRUE,
+      event = xEventGroupWaitBits(RTOS_Events, SW1_PRESSED, pdTRUE,
                                   pdFALSE, NO_TIMEOUT);
       if (event & SW1_PRESSED) {
         game_state = STATE_WAIT_OPP_READY;
@@ -491,7 +479,7 @@ void task_hw05_system_control(void *pvParameters) {
         break;
       }
 
-      event = xEventGroupWaitBits(ECE353_RTOS_Events, SW3_PRESSED, pdTRUE,
+      event = xEventGroupWaitBits(RTOS_Events, SW3_PRESSED, pdTRUE,
                                   pdFALSE, NO_TIMEOUT);
       if (event & SW3_PRESSED && hi_score != RESET_SCORE) {
         hi_score = RESET_SCORE;
@@ -538,7 +526,7 @@ void task_hw05_system_control(void *pvParameters) {
       ipc_send_rdy(sequence_num++);
       ipc_wait_for_ack(pdMS_TO_TICKS(TIMEOUT));
 
-      event = xEventGroupWaitBits(ECE353_RTOS_Events, IPC_RDY_RECEIVED, pdTRUE,
+      event = xEventGroupWaitBits(RTOS_Events, IPC_RDY_RECEIVED, pdTRUE,
                                   pdFALSE, NO_TIMEOUT);
       if ((event & IPC_RDY_RECEIVED) != IPC_RDY_RECEIVED)
         break;
@@ -564,7 +552,7 @@ void task_hw05_system_control(void *pvParameters) {
       break;
 
     case STATE_MY_TURN:
-      event = xEventGroupWaitBits(ECE353_RTOS_Events, SW1_PRESSED, pdTRUE,
+      event = xEventGroupWaitBits(RTOS_Events, SW1_PRESSED, pdTRUE,
                                   pdFALSE, NO_TIMEOUT);
       if (event & SW1_PRESSED) {
         uint32_t encoded_guess =
@@ -611,7 +599,7 @@ void task_hw05_system_control(void *pvParameters) {
 
     case STATE_WAIT_FEEDBACK:
       event =
-          xEventGroupWaitBits(ECE353_RTOS_Events, IPC_GUESS_RESPONSE_RECEIVED,
+          xEventGroupWaitBits(RTOS_Events, IPC_GUESS_RESPONSE_RECEIVED,
                               pdTRUE, pdFALSE, NO_TIMEOUT);
       if ((event & IPC_GUESS_RESPONSE_RECEIVED) != IPC_GUESS_RESPONSE_RECEIVED)
         break;
@@ -650,7 +638,7 @@ void task_hw05_system_control(void *pvParameters) {
       opp_digit_match_cnt = 0;
       opp_exact_match_cnt = 0;
 
-      event = xEventGroupWaitBits(ECE353_RTOS_Events, IPC_GUESS_RECEIVED,
+      event = xEventGroupWaitBits(RTOS_Events, IPC_GUESS_RECEIVED,
                                   pdTRUE, pdFALSE, NO_TIMEOUT);
       if ((event & IPC_GUESS_RECEIVED) != IPC_GUESS_RECEIVED)
         break;
@@ -696,7 +684,7 @@ void task_hw05_system_control(void *pvParameters) {
       break;
 
     case STATE_GAME_OVER:
-      event = xEventGroupWaitBits(ECE353_RTOS_Events, SW1_PRESSED, pdTRUE,
+      event = xEventGroupWaitBits(RTOS_Events, SW1_PRESSED, pdTRUE,
                                   pdFALSE, NO_TIMEOUT);
       if (event & SW1_PRESSED) {
         game_state = STATE_INIT;
@@ -712,7 +700,7 @@ void task_hw05_system_control(void *pvParameters) {
         break;
       }
 
-      event = xEventGroupWaitBits(ECE353_RTOS_Events, IPC_RESET_RECEIVED,
+      event = xEventGroupWaitBits(RTOS_Events, IPC_RESET_RECEIVED,
                                   pdTRUE, pdFALSE, NO_TIMEOUT);
       if (event & IPC_RESET_RECEIVED) {
         game_state = STATE_INIT;
@@ -806,7 +794,7 @@ void app_init_hw(void) {
  * This function implements the behavioral requirements for the ICE
  */
 void app_main(void) {
-  ECE353_RTOS_Events = xEventGroupCreate();
+  RTOS_Events = xEventGroupCreate();
 
   semaphores_init();
   queues_init();
@@ -862,7 +850,7 @@ void app_main(void) {
     CY_ASSERT(0);
   }
 
-  xTaskCreate(task_hw05_system_control, "HW05 System Control",
+  xTaskCreate(task_game_system_control, "HW05 System Control",
               TASK_SYSTEM_CONTROL_STACK_SIZE, NULL,
               TASK_SYSTEM_CONTROL_PRIORITY, NULL);
 

@@ -1,13 +1,3 @@
-/**
- * @file i2c.h
- * @author Joe Krachey (jkrachey@wisc.edu)
- * @brief 
- * @version 0.1
- * @date 2025-09-17
- * 
- * @copyright Copyright (c) 2025
- * 
- */
 #ifndef __I2C_H__
 #define __I2C_H__
 
@@ -16,11 +6,11 @@
 /* Macros */
 #define I2C_MASTER_FREQUENCY 100000u
 
-#if defined(ECE353_FREERTOS)
+#if defined(FREERTOS)
 #include "cyhal_i2c.h"
 #include "cyhal_gpio.h"
 #include "drivers.h"
-#include "ece353-pins.h"
+#include "pins.h"
 
 
 /* Public API */
@@ -64,6 +54,6 @@ cy_rslt_t i2c_read_u8(cyhal_i2c_t *obj, uint8_t subordinate_address, uint8_t reg
  */
 cy_rslt_t i2c_read_u16(cyhal_i2c_t *obj, uint8_t subordinate_address, uint8_t reg, uint16_t *value);
 
-#endif /* ECE353_FREERTOS */
+#endif /* FREERTOS */
 
 #endif /* I2C_H_ */
