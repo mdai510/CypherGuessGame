@@ -3,6 +3,8 @@ Embedded Two-Player Mastermind (PSoC 6, FreeRTOS)
 This project implements a two-player Mastermind game on the PSoC 6 microcontroller platform, where two physical boards communicate over UART to exchange guesses and feedback in real time.
 Each device runs independently while maintaining synchronized game state, demonstrating embedded systems design, real-time task management, and hardware integration.
 
+<img width="1698" height="1358" alt="image" src="https://github.com/user-attachments/assets/3a799935-871b-41d0-aacd-f899781fec47" />
+
 MCU: Infineon PSoC 6 (ARM Cortex-M4 + M0+)
 Development Environment: ModusToolbox
 RTOS: FreeRTOS
@@ -18,6 +20,7 @@ System Architecture
 Designed using FreeRTOS with task-based concurrency
 All peripherals accessed through gatekeeper tasks
 UART protocol implemented for reliable two-device synchronization
+
 Event-driven system with clear separation between:
 UI handling
 Communication
