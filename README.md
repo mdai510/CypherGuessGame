@@ -31,5 +31,6 @@ Game Flow:
 - Robust reset and re-sync mechanism
 
 NOTES:
-This project was completed as part of a university embedded systems course.
-Starter code was provided; all application logic, communication protocol, and system design were implemented independently.
+This project was completed as part of a university-embedded systems course.
+Starter code was provided; no given files included
+All application logic, communication protocol, and system design were implemented independently.
